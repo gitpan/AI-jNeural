@@ -82,6 +82,6 @@ Jet's Neural Architecture is a C++ library.
 
 =head1 SEE ALSO
 
-perl(1), AI::jNeural(3), AI::jNeural::arch::neuron(3), AI::jNeural::arch(3), AI::jNeural::nets::backprop(3), AI::jNeural::nets(3), AI::jNeural::nets::kohonen(3), AI::jNeural::utils::transfer(3), AI::jNeural::utils(3).
+perl(1), AI::jNeural(3), AI::jNeural::arch::neuron(3), AI::jNeural::arch(3), AI::jNeural::nets::backprop(3), AI::jNeural::nets(3), AI::jNeural::nets::kohonen(3), AI::jNeural::nets::sarsa(3), AI::jNeural::utils::transfer(3), AI::jNeural::utils(3).
 
 =cut

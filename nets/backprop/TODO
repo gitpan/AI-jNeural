@@ -1,0 +1,22 @@
+$Id: TODO,v 1.2 2002/06/26 16:11:35 jettero Exp $
+
+Paul:
+  Make the varargs new() call less stupid in the .xs
+
+  add href calling for the .pm ->new
+
+  kill all array calls in the .pm
+
+  split the train_on and test_for calls from the train()
+      so they can be used separately
+
+Fred:
+  add jiggle (jitter?) to the C libjneural and add the jitter 
+      back to the .xs here
+
+  add set_alpha support to the C, xs and .pm  
+      (for variable alpha during training/testing?)
+
+  possibly help redo the docs
+      way too early for this since the interface changes
+      randomly

@@ -1,0 +1,10 @@
+TYPEMAP
+sarsa * TDl
+
+INPUT
+TDl
+	$var = (sarsa *) SvIV( (SV*) SvRV($arg) );
+
+OUTPUT
+TDl
+	sv_setref_iv($arg, "AI::jNeural::nets::sarsa", (I32) $var);

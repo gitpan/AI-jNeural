@@ -1,5 +1,5 @@
 package AI::jNeural::nets::backprop;
-# $Id: backprop.pm,v 1.15 2002/06/25 17:50:23 jettero Exp $
+# $Id: backprop.pm,v 1.17 2002/06/26 14:55:48 jettero Exp $
 # vi:fdm=marker fdl=0:
 
 use strict;
@@ -17,7 +17,7 @@ our @ISA         = qw(Exporter DynaLoader);
 our %EXPORT_TAGS = ( 'all' => [ qw( ) ] );
 our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 our @EXPORT = qw( );
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 
 sub AUTOLOAD {
     my $constname;
@@ -63,28 +63,27 @@ sub set_transfer {
 }
 
 sub train {
-    my ($this, $training_inputs, $training_targets, $testing_inputs, $testing_targets, $epsilon, $max_epochs, $debug) = @_;
+    my ($this, $training_inputs, $training_targets, $testing_inputs, $testing_targets, $epsilon, $max_epochs, $debug,
+        $loops_per_epoch) = @_;
 
     if( ref($training_inputs) eq "HASH" ) {
-        ($this, $training_inputs, $training_targets, $testing_inputs, $testing_targets, $epsilon, $max_epochs, $debug) 
-            = @{ $training_inputs }{qw(
+        ($this, $training_inputs, $training_targets, $testing_inputs, $testing_targets, $epsilon, $max_epochs, $debug,
+         $loops_per_epoch) = @{ $training_inputs }{qw(
                 training_inputs training_targets
                  testing_inputs  testing_targets
                  epsilon alpha max_epochs debug
+                 training_loops_per_epoch
             )},
     }
 
-    my $loops_per_epoch = 10; # should be a switch..
     my $error      = 0;
     my $min_error  = 30000;
 
     croak "dumb inputs"  unless ref($training_inputs)  eq "ARRAY";
     croak "dumb targets" unless ref($training_targets) eq "ARRAY";
 
-    $max_epochs = 4000 unless $max_epochs;
-    $epsilon    = 0.01 unless $epsilon;
-
-    print STDERR "me: $max_epochs, ep: $epsilon\n" if $debug;
+    $epsilon = 0.01 unless $epsilon;
+    $loops_per_epoch = 10 unless $loops_per_epoch;
 
     my $testing = ref($testing_targets) eq "ARRAY" and ref($testing_inputs) eq "ARRAY" ? 1:0;
 
@@ -112,7 +111,7 @@ sub train {
         @o2 = map(pack("d*", @$_), @$testing_targets);
     }
 
-    while( --$max_epochs > 0 and $epsilon < $min_error ) {
+    while( (not defined $max_epochs or --$max_epochs > 0) and $epsilon < $min_error ) {
         for (1..$loops_per_epoch-1) {
             for my $i (sort {rand cmp rand} 0..$#i1) {
                 $this->set_input( $i1[$i] );
@@ -161,7 +160,50 @@ __END__
 
 AI::jNeural::nets::backprop - Backprop nets via libjneural
 
-=head1 SYNOPSIS
+=head1 Synopsis
+
+    This documentation blows.  This module is about half done, so relax. ;)
+    Email feature requests, interface questions, angry emotive expressions, and 
+    all other commetns to the author.
+
+    Warning:  The interface can (and will) change at any time.  It will never do
+    less than it does now, but the calls may change drastically over time.  Deal
+    with it. ;)
+
+=head1 new
+
+    $the_net = new AI::jNeural::nets::backprop($alpha, $inputs, $outputs, $hidden);
+
+    $alpha is the rate the weights are updated during back prop.
+    $inputs is the number of inputs
+    $outputs is the number of outputs
+    $hidden is the number of hidden layers.
+
+       How many nodes per hidden layer?  
+       K, this is dumb, but I'm working on it.
+
+       x = (outputs + inputs);
+       y = x+1;
+       y = x-1;
+
+       The number of nodes in each hidden layer are x,y,z,x,y,z,x,y,z ...
+       libjneural takes a variable number of args to new(), until I work out 
+       the XS vararg format... this is how it will work. ;)
+
+
+=head1 train
+
+    This is a short cut method.  Well, it should be.  Presently it's the only
+    interface for the training and testing methods.  If you wanted to
+    personalize the training/testing then you'd need more methods.  Fred has
+    asked for this very feature.  We're working on it.
+
+    If I were you, I'd stick with the hashref interface (see below) since I'm
+    likely to retire the array arguments soon.
+
+    See below for what I hope is a realtively obvious calling syntax.
+
+=head1 Example
 
    use AI::jNeural::nets::backprop;
 
@@ -170,8 +212,8 @@ AI::jNeural::nets::backprop - Backprop nets via libjneural
     my $hidden = 2;
     my $the_net;
     my $debug = 0;
-    my $epsilon    = 0.0007;
-    my $max_epochs = 8000;
+    my $epsilon    = 0.0007;  # this defaults to 0.01
+    my $max_epochs = 8000;  # this actually defaults to infinity
      
     $the_net = new AI::jNeural::nets::backprop($alpha, $inputs, $outputs, $hidden);
 
@@ -217,9 +259,12 @@ AI::jNeural::nets::backprop - Backprop nets via libjneural
          epsilon=>$epsilon, alpha=>$alpha, max_epochs=>$max_epochs,
 
          debug=>1,
-    });
 
-    # that may be a bit more readable. ;)
+         training_loops_per_epoch => 10, 
+             # defaults to 10
+             # It's the number of times it trains on data before
+             # it calculates an nmse and compares with the epsilon
+    });
 
 =head1 AUTHOR
 
@@ -230,6 +275,6 @@ Jet's Neural Architecture is a C++ library.
 
 =head1 SEE ALSO
 
-perl(1), AI::jNeural(3), AI::jNeural::arch::neuron(3), AI::jNeural::arch(3), AI::jNeural::nets::backprop(3), AI::jNeural::nets(3), AI::jNeural::nets::kohonen(3), AI::jNeural::utils::transfer(3), AI::jNeural::utils(3).
+perl(1), AI::jNeural(3), AI::jNeural::arch::neuron(3), AI::jNeural::arch(3), AI::jNeural::nets::backprop(3), AI::jNeural::nets(3), AI::jNeural::nets::kohonen(3), AI::jNeural::nets::sarsa(3), AI::jNeural::utils::transfer(3), AI::jNeural::utils(3).
 
 =cut

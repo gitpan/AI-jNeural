@@ -27,6 +27,7 @@ arch/.cvsignore
 nets/CVS/Root
 nets/CVS/Repository
 nets/CVS/Entries
+nets/CVS/Entries.Log
 nets/Makefile.PL
 nets/Changes
 nets/I
@@ -47,6 +48,7 @@ nets/backprop/backprop.xs
 nets/backprop/cl
 nets/backprop/typemap
 nets/backprop/.cvsignore
+nets/backprop/TODO
 nets/nets.pm
 nets/kohonen/CVS/Root
 nets/kohonen/CVS/Repository
@@ -60,6 +62,20 @@ nets/kohonen/test.pl
 nets/kohonen/typemap
 nets/kohonen/.cvsignore
 nets/.cvsignore
+nets/sarsa/CVS/Root
+nets/sarsa/CVS/Repository
+nets/sarsa/CVS/Entries
+nets/sarsa/I
+nets/sarsa/Changes
+nets/sarsa/Makefile.PL
+nets/sarsa/.cvsignore
+nets/sarsa/t/CVS/Root
+nets/sarsa/t/CVS/Repository
+nets/sarsa/t/CVS/Entries
+nets/sarsa/t/00_walker.t
+nets/sarsa/sarsa.pm
+nets/sarsa/sarsa.xs
+nets/sarsa/typemap
 Makefile.PL
 README
 distclean
@@ -67,7 +83,6 @@ fix_alsos
 format.scr
 jNeural.c
 jNeural.pm
-jneural-1.05.tar
 makeitromscratch
 manifestbuilder
 test.pl
@@ -90,3 +105,4 @@ utils/transfer/.cvsignore
 utils/utils.pm
 utils/.cvsignore
 .cvsignore
+jneural-1.05.tar

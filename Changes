@@ -1,3 +1,6 @@
+0.53:  Tue Dec 10 14:02:49 EST 2002
+   - jettero added an early version of SARSA
+
 0.52:  Thu Jun 20 18:46:18 EDT 2002
    - jettero made a debug tweek in the backprop module
 
