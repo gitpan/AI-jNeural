@@ -1,0 +1,10 @@
+TYPEMAP
+backprop * BP
+
+INPUT
+BP
+	$var = (backprop *) SvIV( (SV*) SvRV($arg) );
+
+OUTPUT
+BP
+	sv_setref_iv($arg, "AI::jNeural::nets::backprop", (I32) $var);

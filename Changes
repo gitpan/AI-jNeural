@@ -1,3 +1,6 @@
+0.48:  Wed Jun 19 16:45:46 EDT 2002
+   - jettero added backprop nets
+
 0.47:  Thu Nov  2 13:46:11 EST 2000
    - jettero got kohonen to actually work
 
