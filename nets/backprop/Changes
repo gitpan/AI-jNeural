@@ -1,3 +1,15 @@
+0.06:  Wed Jun 19 16:56:17 EDT 2002
+   - jettero should move the pack("d's into the farqing .xs module
+
+0.05:  Wed Jun 19 16:48:19 EDT 2002
+   - jettero made it so train returns the max_epochs (That's what's left ...) if wantarray is true
+
+0.04:  Wed Jun 19 16:47:07 EDT 2002
+   - jettero think we need the number of epochs to come outta that thingy too
+
+0.03:  Wed Jun 19 16:46:50 EDT 2002
+   - jettero think this works ... I also think new() could use some XS work.
+
 :  Tue Jun 18 22:31:31 EDT 2002
    - jettero is trying to resurrect some of this code
 

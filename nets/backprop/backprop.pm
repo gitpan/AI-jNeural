@@ -1,5 +1,5 @@
 package AI::jNeural::nets::backprop;
-# $Id: backprop.pm,v 1.10 2002/06/19 20:38:57 jettero Exp $
+# $Id: backprop.pm,v 1.12 2002/06/20 12:22:20 jettero Exp $
 # vi:fdm=marker fdl=0:
 
 use strict;
@@ -17,7 +17,7 @@ our @ISA         = qw(Exporter DynaLoader);
 our %EXPORT_TAGS = ( 'all' => [ qw( ) ] );
 our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 our @EXPORT = qw( );
-our $VERSION = '0.02';
+our $VERSION = '0.06';
 
 sub AUTOLOAD {
     my $constname;
@@ -74,31 +74,26 @@ sub train {
     $max_epochs = 4000 unless $max_epochs;
     $epsilon    =  0.0 unless $epsilon;
 
-    print STDERR "me: $max_epochs, ep: $epsilon\n";
+    print STDERR "me: $max_epochs, ep: $epsilon\n" if $debug;
+
+    my @i = map(pack("d*", @$_), @$inputs);
+    my @o = map(pack("d*", @$_), @$targets);
 
     while( --$max_epochs > 0 and $epsilon < $min_error ) {
         $this->reset_nmse;
 
-        for my $i (0..$#{ $inputs }) {
-            my @i = @{ $inputs->[$i]  };
-            my @t = @{ $targets->[$i] };
-
-            my $iarr= pack( "d*", @i );
-            my $tarr= pack( "d*", @t );
-
-            $this->set_input( $iarr );
-            $this->train_on(  $tarr );
-
-            print STDERR "@i -> @t | " if $debug;
+        for my $i (0..$#i) {
+            $this->set_input( $i[$i] );
+            $this->train_on(  $o[$i] );
         }
 
         $error     = $this->query_nmse;
         $min_error = $error if $error < $min_error;
 
-        printf STDERR q(%7.5f %7.5f %s), $error, $min_error, "\n" if $debug;
+        printf STDERR q(error=%7.5f, min_error=%7.5f %s), $error, $min_error, "\n" if $debug;
     }
 
-    return $min_error;
+    return wantarray ? ($max_epochs, $min_error) : $min_error;
 }
 
 sub run {

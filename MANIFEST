@@ -66,6 +66,7 @@ fix_alsos
 format.scr
 jNeural.c
 jNeural.pm
+jneural-1.05.tar
 makeitromscratch
 manifestbuilder
 test.pl
@@ -87,6 +88,4 @@ utils/transfer/transfer.xs
 utils/transfer/.cvsignore
 utils/utils.pm
 utils/.cvsignore
-jneural-1.04.tar
 .cvsignore
-jneural-1.04p1.tar

@@ -1,4 +1,3 @@
-/Changes/1.1.1.1/Wed Jun 19 02:32:24 2002//
 D/t////
 /cl/1.1/Wed Jun 19 02:35:17 2002//
 /go/1.2/Wed Jun 19 02:35:46 2002//
@@ -7,4 +6,5 @@ D/t////
 /.cvsignore/1.1/Wed Jun 19 15:24:14 2002//
 /Makefile.PL/1.2/Wed Jun 19 16:03:14 2002//
 /backprop.xs/1.9/Wed Jun 19 18:55:34 2002//
-/backprop.pm/1.10/Wed Jun 19 20:42:48 2002//
+/Changes/1.2/Wed Jun 19 20:56:17 2002//
+/backprop.pm/1.12/Thu Jun 20 12:22:20 2002//
