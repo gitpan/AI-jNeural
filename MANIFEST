@@ -39,7 +39,8 @@ nets/backprop/I
 nets/backprop/t/CVS/Root
 nets/backprop/t/CVS/Repository
 nets/backprop/t/CVS/Entries
-nets/backprop/t/xor.t
+nets/backprop/t/10_sin.t
+nets/backprop/t/00_xor.t
 nets/backprop/go
 nets/backprop/backprop.pm
 nets/backprop/backprop.xs

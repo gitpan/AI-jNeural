@@ -64,6 +64,12 @@ backprop::train_on(input)
         CODE:
         THIS->train_on( (double *) input );
 
+void 
+backprop::test_on(input)
+        char * input
+        CODE:
+        THIS->test_for( (double *) input );
+
 void
 backprop::reset_nmse()
 

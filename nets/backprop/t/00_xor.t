@@ -1,5 +1,5 @@
 # vi:fdm=marker fdl=0 syntax=perl:
-# $Id: xor.t,v 1.4 2002/06/19 20:56:26 jettero Exp $
+# $Id: 00_xor.t,v 1.1 2002/06/25 16:35:02 jettero Exp $
 
 use strict;
 use Test;
@@ -18,7 +18,8 @@ my $the_net;
 my $debug = 0;
 
 print STDERR " new\n";
-ok $the_net = new AI::jNeural::nets::backprop($alpha, $inputs, $outputs, $hidden);
+ok 
+$the_net = new AI::jNeural::nets::backprop($alpha, $inputs, $outputs, $hidden);
 
 my $xor_i = [ [ 0, 0 ], [ 1, 1 ], [ 0, 1 ], [ 1, 0 ] ];
 my $xor_o = [ [ 0 ],    [ 0 ],    [ 1 ],    [ 1 ]    ];
@@ -29,7 +30,7 @@ my $max_epochs = 4000;
 $the_net->set_transfer(SIGMOID);
 
 print STDERR " training for xor\n"; 
-my @a = $the_net->train( $xor_i, $xor_o, $epsilon, $max_epochs, $debug );
+my @a = $the_net->train( $xor_i, $xor_o, undef, undef, $epsilon, $max_epochs, $debug );
 ok $epsilon >= $a[1];
 
 $a[0] = 4000 - $a[0];
