@@ -13,6 +13,7 @@ gunzip jn*.tar.gz
 ./distclean
 perl Makefile.PL skip_stuff && make dist
 n=`ls AI*gz`;
+date=`date`;
 rm -vf ~/www/PerlModules/AI*gz
 cp -v  AI*gz ~/www/PerlModules
 mv -v  AI*gz ../archives
@@ -23,6 +24,7 @@ This package is really big.  I'm not going to provide the documentation online l
 I did for the other packages on this page.  If you want more infomation, goto 
 <a href="http://www.voltar.org/jneural">the C++ version</a>.
 Download your copy of <a href="$n">AI::jNeural ($n)</a> now.
+Last updated on $date.
 EOF
 
 chmod -v 644 ~/www/PerlModules/jNeural.b.html ~/www/PerlModules/AI*gz
