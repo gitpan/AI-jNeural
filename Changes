@@ -1,0 +1,67 @@
+0.47:  Thu Nov  2 13:46:11 EST 2000
+   - jettero got kohonen to actually work
+
+0.46:  Wed Nov  1 22:51:57 EST 2000
+   - jettero installed nets/kohonen/
+
+0.45:  Wed Nov  1 22:21:53 EST 2000
+   - jettero installed nets/
+
+0.44:  Wed Nov  1 16:16:57 EST 2000
+   - jettero converted us s/Math::/AI::/g ...
+
+0.43:  Mon Oct 30 14:24:22 EST 2000
+   - jettero patched up a small jNeural.bs/c/o/xs ... don't
+     bother to compile that problem
+
+0.42:  Mon Oct 30 14:13:14 EST 2000
+   - jettero slowed down the versioning again... Now it
+     feels more like we have a v1.0 asymtote.
+
+0.41:  Mon Oct 30 14:12:29 EST 2000
+   - jettero got the Makefile.PL to a place where it'll do a
+     fancy dependancy check and/or install of libjneural
+
+0.38:  Mon Oct 30 13:27:22 EST 2000
+   - jettero added some auto-install stuff to the
+     Makefile.PL
+
+0.35:  Mon Oct 30 10:55:30 EST 2000
+   - jettero slowed the versioning down quite a bit ... it
+     was rediculous
+
+0.32:  Mon Oct 30 10:55:07 EST 2000
+   - jettero installed transfer.pm and made it work right
+
+0.2:  Mon Oct 30 07:11:02 EST 2000
+   - jettero sped up the versioning for this module
+
+0.08:  Mon Oct 30 07:06:05 EST 2000
+   - jettero did a little documentation
+
+0.07:  Mon Oct 30 07:05:59 EST 2000
+   - jettero got arch/neuron/neuron.{xs,pm} to bless an
+     object and refer to its name
+
+0.06:  Sun Oct 29 14:28:52 EST 2000
+   - jettero think I got the type mapping for neuron almost
+     right
+
+0.05:  Sun Oct 29 13:58:33 EST 2000
+   - jettero had to make some major changes to the fix_alsos
+     program to account for the unusually large directory
+     structure that's forming in the jNeural dirspace
+
+0.04:  Sun Oct 29 13:47:42 EST 2000
+   - jettero got the whole perl Makefile.PL thing to go
+     smoothly
+
+0.02:  Sun Oct 29 13:43:44 EST 2000
+   - jettero got this fairly well decked out with auto-stuff
+
+Revision history for Perl extension AI::jNeural.
+
+0.01  Sun Oct 29 13:38:56 2000
+        - original version; created by h2xs 1.20 with
+          options -n AI::jNeural -X
+

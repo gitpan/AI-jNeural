@@ -1,0 +1,10 @@
+TYPEMAP
+neuron * NO
+
+INPUT
+NO
+	$var = (neuron *) SvIV( (SV*) SvRV($arg) );
+
+OUTPUT
+NO
+	sv_setref_iv($arg, "AI::jNeural::arch::neuron", (I32) $var);

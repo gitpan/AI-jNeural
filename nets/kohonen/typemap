@@ -1,0 +1,10 @@
+TYPEMAP
+kohonen * KO
+
+INPUT
+KO
+	$var = (kohonen *) SvIV( (SV*) SvRV($arg) );
+
+OUTPUT
+KO
+	sv_setref_iv($arg, "AI::jNeural::nets::kohonen", (I32) $var);

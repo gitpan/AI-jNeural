@@ -1,0 +1,28 @@
+#!/bin/sh
+
+if [ ! -d ../archives ]; then
+    echo looser ...
+    exit 1
+fi
+
+rm -v  jn*.tar
+cp -v  ~/www/jneural/jn*.tar.gz .
+echo the whole thing compresses better if I unpack that quick.
+gunzip jn*.tar.gz
+
+./distclean
+perl Makefile.PL skip_stuff && make dist
+n=`ls AI*gz`;
+rm -vf ~/www/PerlModules/AI*gz
+cp -v  AI*gz ~/www/PerlModules
+mv -v  AI*gz ../archives
+
+cat > ~/www/PerlModules/jNeural.b.html << EOF
+<p>
+This package is really big.  I'm not going to provide the documentation online like
+I did for the other packages on this page.  If you want more infomation, goto 
+<a href="http://www.voltar.org/jneural">the C++ version</a>.
+Download your copy of <a href="$n">AI::jNeural ($n)</a> now.
+EOF
+
+chmod -v 644 ~/www/PerlModules/jNeural.b.html ~/www/PerlModules/AI*gz

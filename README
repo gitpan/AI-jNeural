@@ -1,0 +1,6 @@
+You will need the Jet's Neural Architechture library installed to use this
+module at all.  This package is bundled with the JNA for convenience.
+
+You will also need flex installed.  I'm going to leave that as an
+exersize for the reader, since I think most people have a copy.
+

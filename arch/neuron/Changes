@@ -1,0 +1,6 @@
+Revision history for Perl extension AI::jNeural::arch::neuron.
+
+0.01  Sun Oct 29 13:30:17 2000
+	- original version; created by h2xs 1.20 with options
+		-n AI::jNeural::arch::neuron /usr/local/include/arch/neuron.h -ljneural
+
